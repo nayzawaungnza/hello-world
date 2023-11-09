@@ -3,29 +3,29 @@
      <h1>{{ greet }} {{ name }}</h1> <!-- Text Binding -->
      <p v-html="channel" ></p><!-- Binding HTML -->
      <div v-html="hack"></div>
-     <h3 v-bind:id="headingID">Heading</h3> <!-- Attribute Binding -->
-     <button v-bind:disabled="isDisabled">Bind</button>
-     <h4 class="underline" v-bind:class="status">Underline</h4>
-     <h4 v-bind:class="isPromoted && 'promoted'">Promoted Movies</h4>
-     <h5 v-bind:class="isSoldOut ? 'sold-out':'new'">isSoldOut? movies</h5>
-     <h5 v-bind:class="['new', 'promoted']">Newly Promoted Movies</h5>
-     <h5 v-bind:class="[isPromoted&& 'promoted', isSoldOut?'sold-out':'new']">Array conditional movies</h5>
-    <h5 v-bind:class="{
+     <h3 :id="headingID">Heading</h3> <!-- Attribute Binding -->
+     <button :disabled="isDisabled">Bind</button>
+     <h4 class="underline" :class="status">Underline</h4>
+     <h4 :class="isPromoted && 'promoted'">Promoted Movies</h4>
+     <h5 :class="isSoldOut ? 'sold-out':'new'">isSoldOut? movies</h5>
+     <h5 :class="['new', 'promoted']">Newly Promoted Movies</h5>
+     <h5 :class="[isPromoted&& 'promoted', isSoldOut?'sold-out':'new']">Array conditional movies</h5>
+    <h5 :class="{
       promoted: isPromoted,
       new: !isSoldOut,
       'sold-out': isSoldOut,
     }">Object conditional movies</h5>
 
-    <h1 v-bind:style="{
+    <h1 :style="{
       color:highlightColor,
       // 'font-size': headingSize + 'px',
       fontSize: headingSize + 'px',
       padding:'20px',
     }">Inline Style</h1>
-    <h1 v-bind:style="headerStyleObject">Object style</h1>
+    <h1 :style="headerStyleObject">Object style</h1>
 
-    <div v-bind:style="[baseStyleObject, successStyleObject]">Success Style</div>
-    <div v-bind:style="[baseStyleObject, dangerStyleObject]">Danger Style</div>
+    <div :style="[baseStyleObject, successStyleObject]">Success Style</div>
+    <div :style="[baseStyleObject, dangerStyleObject]">Danger Style</div>
 
   </div>
 </template>

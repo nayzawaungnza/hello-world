@@ -8,6 +8,7 @@
       <h3>De</h3>
       <h4>Develop</h4>
     </div>
+    <h1 v-show="showElement">Using v-show</h1>
    </div>
 </template>
 
@@ -19,6 +20,7 @@ export default {
     return{
       num: 'Hi',
       display: true,
+      showElement:false,
   }
 }
 }

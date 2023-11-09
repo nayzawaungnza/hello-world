@@ -1,12 +1,46 @@
 <template>
    <div>
-      <h1>{{ name }}</h1>
-      <button v-on:click="changeName($event), increase(1, $event)">Change Name</button>
-      <h4>{{ count }}</h4>
-      <button @click="increase(1, $event)">Increase 1</button>
-      <button @click="increase(5, $event)">Increase 5</button>
-      <button @click="decrease(1, $event)">Decrease 1</button>
-      <button @click="decrease(5, $event)">Decrease 5</button>
+    <pre>
+      {{ JSON.stringify(formValues, null, 2) }}
+    </pre>
+    <form>
+      <div class="rendered-form">
+        <div class="formbuilder-text form-group field-name">
+            <label for="name" class="formbuilder-text-label">Name</label>
+            <input type="text" class="form-control" name="name" v-model="formValues.name">
+        </div>
+    </div>
+    <div class="rendered-form">
+        <div class="formbuilder-text form-group ">
+            <label for="profile" class="formbuilder-text-label">Profile Summary</label>
+            <textarea class="form-control" name="profile" v-model="formValues.profileSummeery"></textarea>
+        </div>
+    </div>
+
+    <div class="rendered-form">
+    <div class="formbuilder-select form-group field-country">
+        <label for="country" class="formbuilder-select-label">Country</label>
+        <select class="form-control" name="country" id="country" v-model="formValues.country">
+          <option value="" >Select country</option>
+            <option value="myanmar" >Myanmar</option>
+            <option value="singapore" id="country-1">Singapore</option>
+            <option value="thailand" id="country-2">Thailand</option>
+        </select>
+    </div>
+</div>
+
+<div class="rendered-form">
+    <div class="formbuilder-select form-group field-country">
+        <label for="joblocation" class="formbuilder-select-label">Job Location</label>
+        <select class="form-control" name="joblocation" id="joblocation" multiple v-model="formValues.jobLocation">
+            <option value="myanmar" >Myanmar</option>
+            <option value="singapore" id="country-1">Singapore</option>
+            <option value="thailand" id="country-2">Thailand</option>
+        </select>
+    </div>
+</div>
+
+    </form>
    </div>
 </template>
 
@@ -15,23 +49,16 @@ export default {
   name: 'App',
   data(){
     return{
-      name:'nay zaw aung',
-      count:0,
+      formValues:{
+        name:'',
+        profileSummeery:'',
+        country:'',
+        jobLocation:[],
+      }
     }
   },
 methods:{
-  changeName(event){
-      this.name = 'Aung Aung'
-      console.log('Event' , event)
-  },
-   increase(num, event){
-    this.count += num
-    console.log('Event' , event)
-   },
-   decrease(num, event){
-    this.count -= num
-    console.log('Event' , event)
-   }
+  
 },
 }
 </script>

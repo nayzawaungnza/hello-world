@@ -11,13 +11,7 @@
         </div>
     </div>
 
-    <div class="rendered-form">
-        <div class="formbuilder-text form-group field-name">
-            <label for="age" class="formbuilder-text-label">Age</label>
-            <input type="number" class="form-control" name="age" v-model.number="formValues.age">
-        </div>
-    </div>
-
+    
 
     <div class="rendered-form">
         <div class="formbuilder-text form-group ">
@@ -81,9 +75,17 @@
   <input type="radio"  value="10+" id="10+" v-model="formValues.yearOfExperience">
   <label for="10+">10+</label>
 </div>
-<div>
+
+<div class="rendered-form">
+        <div class="formbuilder-text form-group field-name">
+            <label for="age" class="formbuilder-text-label">Age</label>
+            <input @keyup.enter="submitForm" type="number" class="form-control" name="age" v-model.number="formValues.age">
+        </div>
+    </div>
+
+<!-- <div>
   <button>Submit</button>
-</div>
+</div> -->
 
     </form>
    </div>

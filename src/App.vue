@@ -1,33 +1,14 @@
 <template>
-  <div>
-     <h1>{{ greet }} {{ name }}</h1> <!-- Text Binding -->
-     <p v-html="channel" ></p><!-- Binding HTML -->
-     <div v-html="hack"></div>
-     <h3 :id="headingID">Heading</h3> <!-- Attribute Binding -->
-     <button :disabled="isDisabled">Bind</button>
-     <h4 class="underline" :class="status">Underline</h4>
-     <h4 :class="isPromoted && 'promoted'">Promoted Movies</h4>
-     <h5 :class="isSoldOut ? 'sold-out':'new'">isSoldOut? movies</h5>
-     <h5 :class="['new', 'promoted']">Newly Promoted Movies</h5>
-     <h5 :class="[isPromoted&& 'promoted', isSoldOut?'sold-out':'new']">Array conditional movies</h5>
-    <h5 :class="{
-      promoted: isPromoted,
-      new: !isSoldOut,
-      'sold-out': isSoldOut,
-    }">Object conditional movies</h5>
-
-    <h1 :style="{
-      color:highlightColor,
-      // 'font-size': headingSize + 'px',
-      fontSize: headingSize + 'px',
-      padding:'20px',
-    }">Inline Style</h1>
-    <h1 :style="headerStyleObject">Object style</h1>
-
-    <div :style="[baseStyleObject, successStyleObject]">Success Style</div>
-    <div :style="[baseStyleObject, dangerStyleObject]">Danger Style</div>
-
-  </div>
+   <div>
+      <h2 v-if="num === 0">The Number is zero</h2>
+      <h2 v-else-if="num < 0">The Number is negative</h2>
+      <h2 v-else-if="num > 0">The Number is positive</h2>
+    <h2 v-else>The Number is not a number</h2>
+    <div v-if="display">
+      <h3>De</h3>
+      <h4>Develop</h4>
+    </div>
+   </div>
 </template>
 
 <script>
@@ -36,41 +17,10 @@ export default {
   name: 'App',
   data(){
     return{
-      greet:'Hello',
-      name:'Nay Zaw',
-      channel: '<b>Developer Nay</b>',
-      hack: `<a href="#" onclick="alert('hacks')"> Win a Prize</a>`,
-      headingID : 'heading',
-      isDisabled: true,
-      status:'success',
-      isPromoted:true,
-      isSoldOut:true,
-      highlightColor:'orange',
-      headingSize:50,
-      headerStyleObject:{
-        color:'orange',
-        fontSize:'40px',
-        padding:'10px',
-      },
-      baseStyleObject:{
-        fontSize:'50px',
-        padding:'10px',
-      },
-      successStyleObject:{
-        color:'green',
-        border:'1px solid #090900',
-        backgroundColor:'lightgreen',
-        padding:'20px',
-      },
-      dangerStyleObject:{
-        color:'white',
-        border:'1px solid #090900',
-        backgroundColor:'red',
-        padding:'20px',
-      }
-    }
+      num: 'Hi',
+      display: true,
   }
-  
+}
 }
 </script>
 
@@ -83,19 +33,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.promoted{
-  font-style: italic;
-}
-.success{
-  color: green;
-}
-.underline{
-  text-decoration: underline;
-}
-.new{
-  color:olivedrab
-}
-.sold-out{
-  color : red;
-}
+
 </style>

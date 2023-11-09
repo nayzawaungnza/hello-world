@@ -16,6 +16,17 @@
       'sold-out': isSoldOut,
     }">Object conditional movies</h5>
 
+    <h1 v-bind:style="{
+      color:highlightColor,
+      // 'font-size': headingSize + 'px',
+      fontSize: headingSize + 'px',
+      padding:'20px',
+    }">Inline Style</h1>
+    <h1 v-bind:style="headerStyleObject">Object style</h1>
+
+    <div v-bind:style="[baseStyleObject, successStyleObject]">Success Style</div>
+    <div v-bind:style="[baseStyleObject, dangerStyleObject]">Danger Style</div>
+
   </div>
 </template>
 
@@ -34,6 +45,29 @@ export default {
       status:'success',
       isPromoted:true,
       isSoldOut:true,
+      highlightColor:'orange',
+      headingSize:50,
+      headerStyleObject:{
+        color:'orange',
+        fontSize:'40px',
+        padding:'10px',
+      },
+      baseStyleObject:{
+        fontSize:'50px',
+        padding:'10px',
+      },
+      successStyleObject:{
+        color:'green',
+        border:'1px solid #090900',
+        backgroundColor:'lightgreen',
+        padding:'20px',
+      },
+      dangerStyleObject:{
+        color:'white',
+        border:'1px solid #090900',
+        backgroundColor:'red',
+        padding:'20px',
+      }
     }
   }
   

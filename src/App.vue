@@ -3,8 +3,10 @@
       <h1>{{ name }}</h1>
       <button v-on:click="name='Aung Aung'">Change Name</button>
       <h4>{{ count }}</h4>
-      <button @click="count +=1">Increase</button>
-      <button @click="count -=1">Decrease</button>
+      <button @click="increase(1)">Increase 1</button>
+      <button @click="increase(5)">Increase 5</button>
+      <button @click="decrease(1)">Decrease 1</button>
+      <button @click="decrease(5)">Decrease 5</button>
    </div>
 </template>
 
@@ -18,11 +20,11 @@ export default {
     }
   },
 methods:{
-   increase(){
-    this.count +=1
+   increase(num){
+    this.count += num
    },
-   decrease(){
-    this.count -= 1
+   decrease(num){
+    this.count -= num
    }
 },
 }

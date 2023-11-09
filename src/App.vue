@@ -1,7 +1,7 @@
 <template>
    
       <div>
-        <h2 v-for="(name, index) in names" :key="name"> {{ index }} {{ name }}</h2>
+        <h2 v-for="(name, index) in names" :key="name" > {{ index }} {{ name }}</h2>
         <h2 v-for="name in fullNames" :key="name.first">{{ name.first }} {{ name.last }}</h2>
         <div v-for="actor in actors" :key="actor.name">
             <h2>{{ actor.name }}</h2>
@@ -16,6 +16,10 @@
         <hr>
       </template>
       <button @click="shuffle">shuffle!</button>
+
+      <template v-for="name in names" :key="name">
+        <h3 v-if="name === 'Aung Aung'">{{ name }}</h3>
+      </template>
       
 </template>
 

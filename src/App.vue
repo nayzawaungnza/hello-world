@@ -3,13 +3,22 @@
     <pre>
       {{ JSON.stringify(formValues, null, 2) }}
     </pre>
-    <form @submit="submitForm">
+    <form @submit.prevent="submitForm">
       <div class="rendered-form">
         <div class="formbuilder-text form-group field-name">
             <label for="name" class="formbuilder-text-label">Name</label>
-            <input type="text" class="form-control" name="name" v-model="formValues.name">
+            <input type="text" class="form-control" name="name" v-model.trim.lazy="formValues.name">
         </div>
     </div>
+
+    <div class="rendered-form">
+        <div class="formbuilder-text form-group field-name">
+            <label for="age" class="formbuilder-text-label">Age</label>
+            <input type="number" class="form-control" name="age" v-model.number="formValues.age">
+        </div>
+    </div>
+
+
     <div class="rendered-form">
         <div class="formbuilder-text form-group ">
             <label for="profile" class="formbuilder-text-label">Profile Summary</label>
@@ -93,12 +102,12 @@ export default {
         remoteWork:'no',
         skillSet:[],
         yearOfExperience:'',
+        age:null,
       }
     }
   },
 methods:{
-  submitForm(event){
-    event.preventDefault()
+  submitForm(){
     console.log('Form Value ' , this.formValues)
     
   }

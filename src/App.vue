@@ -1,22 +1,11 @@
 <template>
    <div>
-    <h1>Full Name - {{ firstName }} {{ lastName }}</h1>
-    <h3>Computed Full name - {{ fullName }}</h3>
-    <h2>Total - {{ items.reduce((total,current)=>(total = total + current.price),0) }}</h2>
-
-    <h6>Computed Total - {{ total }}</h6>
-
-    <button @click="items.push({id:4,title:'PC',price:400})">Add Item</button>
-
-    <h5>Method Total - {{ getTotal() }}</h5>
-    <input type="text" v-model="country" />
-    <div v-for="item in items" :key="item.id">
-      <h5 v-if="item.price>100"> {{ item.title }} - {{ item.price }}</h5>
+    <h1>Volume Tracker - [0-20]</h1>
+    <h3>Current Volume - {{ volume }}</h3>
+    <div>
+      <button @click="volume += 2">Increase</button>
+      <button @click="volume -= 2">Decrease</button>
     </div>
-    <h6 v-for="item in expensiveItems" :key="item.id">{{ item.title }} - {{ item.price }}</h6>
-
-
-    <button @click="changeFullName">Change Fullname</button>
    </div>
 
    
@@ -27,57 +16,18 @@ export default {
   name: 'App',
   data(){
     return{
-      firstName:'Nay Zaw',
-      lastName: 'Aung',
-      items:[
-          {
-            id:1,
-            title:'TV',
-            price:100,
-          },
-          {
-            id:2,
-            title:'Phone',
-            price:200,
-          },
-          {
-            id:3,
-            title:'Laptop',
-            price:300,
-          },
-      ],
-      country:'',
+      volume:0
     }
   },
-methods:{
-  getTotal(){
-    console.log('Get Total Method');
-    return this.items.reduce((total,current)=>(total = total + current.price),0)
-  },
-  changeFullName(){
-    this.fullName = 'Mg Mg'
+methods:{},
+computed:{},
+watch:{
+  volume(newVolume, oldVolume){
+      if(newVolume> oldVolume && newVolume === 16){
+        alert('Listening to a high volume for a long time may damage your hearing')
+      }
   }
 },
-computed:{
-  fullName:{
-    get(){
-      return `${this.firstName} ${this.lastName}`
-    },
-    set(value){
-        const names=value.split(' ')
-        this.firstName=names[0]
-        this.lastName=names[1]
-    }
-    
-  },
-  total(){
-    console.log('Get Total Computed Properties');
-    return this.items.reduce((total,current)=>(total = total + current.price),0)
-  },
-  expensiveItems(){
-    return this.items.filter(item=> item.price>100)
-  }
-}
 }
 </script>
 

@@ -10,6 +10,10 @@
 
     <h5>Method Total - {{ getTotal() }}</h5>
     <input type="text" v-model="country" />
+    <div v-for="item in items" :key="item.id">
+      <h5 v-if="item.price>100"> {{ item.title }} - {{ item.price }}</h5>
+    </div>
+    <h6 v-for="item in expensiveItems" :key="item.id">{{ item.title }} - {{ item.price }}</h6>
    </div>
 </template>
 
@@ -53,6 +57,9 @@ computed:{
   total(){
     console.log('Get Total Computed Properties');
     return this.items.reduce((total,current)=>(total = total + current.price),0)
+  },
+  expensiveItems(){
+    return this.items.filter(item=> item.price>100)
   }
 }
 }

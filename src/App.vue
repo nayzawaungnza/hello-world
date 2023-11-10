@@ -7,6 +7,9 @@
     <h6>Computed Total - {{ total }}</h6>
 
     <button @click="items.push({id:4,title:'PC',price:400})">Add Item</button>
+
+    <h5>Method Total - {{ getTotal() }}</h5>
+    <input type="text" v-model="country" />
    </div>
 </template>
 
@@ -34,16 +37,21 @@ export default {
             price:300,
           },
       ],
+      country:'',
     }
   },
 methods:{
-  
+  getTotal(){
+    console.log('Get Total Method');
+    return this.items.reduce((total,current)=>(total = total + current.price),0)
+  }
 },
 computed:{
   fullName(){
     return `${this.firstName} ${this.lastName}`
   },
   total(){
+    console.log('Get Total Computed Properties');
     return this.items.reduce((total,current)=>(total = total + current.price),0)
   }
 }
